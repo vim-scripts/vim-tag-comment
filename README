@@ -1,0 +1,23 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=5190
+
+This plugin provides commands that "properly" comment and uncomment XML and HTML tags. All the plugins I have seen for this would take the following:
+
+<foo>
+  <bar>baz</bar>
+</foo>
+
+and comment it like this:
+
+<!--<foo>-->
+  <!--<bar>baz</bar>-->
+<!--</foo>-->
+
+This is ugly and excessive!
+I believe the proper way to do this is:
+
+<!--foo>
+  <bar>baz</bar>
+</foo-->
+
+The provided XmlComment command does this and the provided XmlUncomment command does the opposite.
+These even support nested comments. See the README file for more detail.
