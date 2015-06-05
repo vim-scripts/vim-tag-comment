@@ -14,7 +14,7 @@
 " `< - jump to beginning of previous visual selection
 " a!-- - append beginning comment delimiter !--
 " esc - insert mode
-command! XmlComment execute "normal! vat\<esc>`<:'<,'>s/<!--/<!__/ge\<cr>:'<,'>s/-->/__>/ge\<cr>:nohlsearch\<cr>`>i--\<esc>`<a!--\<esc>"
+command! ElementComment execute "normal! vat\<esc>`<:'<,'>s/<!--/<!__/ge\<cr>:'<,'>s/-->/__>/ge\<cr>:nohlsearch\<cr>`>i--\<esc>`<a!--\<esc>"
 
 " ?!--\<cr> - search backward for beginning comment delimiter
 " mb - mark beginning of comment
@@ -24,4 +24,13 @@ command! XmlComment execute "normal! vat\<esc>`<:'<,'>s/<!--/<!__/ge\<cr>:'<,'>s
 " 2x - delete the ending comment delimiter
 " :'b,'es/<!__/<!--/g\<cr> - fix nested beginning comment delimiters
 " :'b,'es/__>/-->/g\<cr> - fix nested ending comment delimters
-command! XmlUncomment execute "normal! ?!--\<cr>mb3x/--\<cr>me2x:'b,'es/<!__/<!--/ge\<cr>:'b,'es/__>/-->/ge\<cr>"
+command! ElementUncomment execute "normal! ?!--\<cr>mb3x/--\<cr>me2x:'b,'es/<!__/<!--/ge\<cr>:'b,'es/__>/-->/ge\<cr>"
+
+command! TagComment execute "normal! vi<\<esc>a--\<esc>`<i!--\<esc>"
+command! TagUncomment execute "normal! vi<\<esc>hxx`<xxxh"
+
+nnoremap <leader>tc :ElementComment<cr>
+nnoremap <leader>tu :ElementUncomment<cr>
+
+nnoremap <leader>tC :TagComment<cr>
+nnoremap <leader>tU :TagUncomment<cr>
